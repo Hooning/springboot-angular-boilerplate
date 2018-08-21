@@ -10,19 +10,21 @@ For short it ables to build Angluar (not AngularJS, after Angular 2) for client 
 - IntelliJ IDEA
 
 
-![Welcome_IntelliJ](https://raw.githubusercontent.com/Hooning/springboot-angular-boilerplate/readme-img/0_Welcome_IntelliJ.png)
+      
+    
+![Welcome_IntelliJ](readme_img/0_Welcome_IntelliJ.png?raw=true "Title")
 
-1. Create New Project
+1.  Create New Project
 
-![Spring_Initializr](https://raw.githubusercontent.com/Hooning/springboot-angular-boilerplate/readme-img/1_0_Spring_Initializr.png)
+![Spring_Initializr](readme_img/1_0_Spring_Initializr.png?raw=true "Title")
 
-![Project_Metadata](https://raw.githubusercontent.com/Hooning/springboot-angular-boilerplate/readme-img/1_1_Project_Metadata.png)
+![Project_Metadata](readme_img/1_1_Project_Metadata.png?raw=true "Title")
 
-![Dependencies](https://raw.githubusercontent.com/Hooning/springboot-angular-boilerplate/readme-img/1_2_Dependencies.png)
+![Dependencies](readme_img/1_2_Dependencies.png?raw=true "Title")
 
 I just choosed [Web] for the basic setup.
 
-2. Npm Install (locally)
+2.  Npm Install (locally)
 We will use [Maven Frontend Plugin](https://github.com/eirslett/frontend-maven-plugin) from Eirik Sletteberg. Now we will add it to out `pom.xml`:
 <br/><br/>
 pom.xml <br/>
@@ -67,7 +69,7 @@ $ ls node*
 
 you will see node and node_module installed in your project root directory.
 
-3. Install Angular CLI
+3.  Install Angular CLI
 
 First create a convinient script to run ```npm``` from the local installation. 
 
@@ -103,7 +105,7 @@ $ ./ng version
 
 Running these 3 command, you will see that Angular CLI is successfully installed.
 
-4. Create an Angular App
+4.  Create an Angular App
 
 Now we will create an Angular app, move the Angular app into the top level directory which can be build with Maven.
 
@@ -123,7 +125,7 @@ $ rm -rf ./client
 $ sed -i -e 's,dist/client,target/classes/static,' angular.json
 ```
 
-5. Building
+5.  Building
 
 Add an execution to install the modules used in the application:
 
@@ -158,25 +160,25 @@ then the client app will be compiled during the Maven build.
 
 ## Development server
 
-1. Client side development use:
+**[Client side development use]**
 
 ```
 $ ./ng serve 
 
 ```
 
-for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. 
+For a client local server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. 
 
-2. Server side development use:
+**[Server side development use]**
 
 First, we will create a Spring Boot WAR to run a local tomcat server.
 
-1) We need to package a WAR application. Change pom.xml 
+1 ) We need to package a WAR application. Change pom.xml 
 ```
 <packaging>war</packaging>
 ```
 
-2) Modify the final WAR file name to avoid including version numbers:
+2 ) Modify the final WAR file name to avoid including version numbers:
 ```
 <build>
     <finalName>${artifactId}</finalName>
@@ -184,7 +186,7 @@ First, we will create a Spring Boot WAR to run a local tomcat server.
 </build>
 ```
 
-3) Add Tomcat dependency:
+3 ) Add Tomcat dependency:
 ```
 <dependency>
    <groupId>org.springframework.boot</groupId>
@@ -193,7 +195,7 @@ First, we will create a Spring Boot WAR to run a local tomcat server.
 </dependency>
 ```
 
-4) Finally, we initialize the Servlet context required by Tomacat.<br/>
+4 ) Finally, we initialize the Servlet context required by Tomacat.<br/>
 Inherit SpringBootServletInitializer class
 ```
 @SpringBootApplication
@@ -207,16 +209,16 @@ $ ./mvnw clean package
 ```
 WAR file will be generated at target/${artifactId}.war
 
-5) Download Apache Tomcat and unpack into tomcat folder
+5 ) Download Apache Tomcat and unpack into tomcat folder
 
-6) Run configuration setup
+6 ) Run configuration setup
 
-![Run_Configuration](https://raw.githubusercontent.com/Hooning/springboot-angular-boilerplate/readme-img/2_1_Run_Configuration.png)
+![Run_Configuration](readme_img/2_1_Run_Configuration.png?raw=true "Title")
 
 [Server] tab
 Name the configuration, Configure to select the Tomcat version you downloaded.
 
-![Deployment_Configuration](https://raw.githubusercontent.com/Hooning/springboot-angular-boilerplate/readme-img/2_2_Deployment.png)
+![Deployment_Configuration](readme_img/2_2_Deployment.png?raw=true "Title")
 
 [Deployment] tab
-Add ${artifactId}:war exploded for server startup and click OK
+Add ${artifactId}:war exploded for server startup and click OK.
